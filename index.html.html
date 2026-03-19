@@ -2,11 +2,6 @@
 <html lang="en">
 <head>
   <script async src="https://ss.mrmnd.com/banner.js"></script>
-  <div data-mndbanid="70b3288a-7ccf-45bb-9372-4dceca53197d"></div>
-  <div data-mndbanid="07c29d12-ef80-45c8-aa54-2e880cf9ae2a"></div>
-  <script async src="https://ss.mrmnd.com/banner.js"></script>
-  <script async src="https://ss.mrmnd.com/banner.js"></script>
-  <div data-mndbanid="f1af80ea-5de2-4f07-b370-03cfc24eba28"></div>
   <meta name="mnd-ver" content="snbgsqm8acdnbolecqmyxa" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,6 +23,8 @@
       align-items: center;
       justify-content: center;
       padding: 2rem 1.5rem;
+      /* Windows 7 default cursor for body */
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28"><circle cx="12" cy="12" r="10" fill="white" stroke="black" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="black"/></svg>') 12 12, auto;
     }
 
     .review-card {
@@ -181,6 +178,38 @@
       font-size: 1.4rem;
     }
 
+    /* ---------- STYLES FOR CENTERED ADS ---------- */
+    .ad-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin: 1.5rem 0;
+      padding: 0.5rem;
+      background: #ffffffc0;
+      border-radius: 1rem;
+      border: 1px dashed #a0c0d0;
+    }
+    
+    .ad-container > div {
+      max-width: 100%;
+    }
+    
+    [data-mndbanid] {
+      margin: 0 auto;
+    }
+
+    /* ---------- WINDOWS 7 STYLE CURSOR FOR ADS ---------- */
+    .ad-container {
+      /* Windows 7 white cursor with black outline - small and classic */
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28"><circle cx="12" cy="12" r="10" fill="white" stroke="black" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="black"/></svg>') 12 12, auto !important;
+    }
+    /* Also apply to any potential iframes or nested elements inside ad container */
+    .ad-container * {
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28"><circle cx="12" cy="12" r="10" fill="white" stroke="black" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="black"/></svg>') 12 12, auto !important;
+    }
+    /* --------------------------------------------------- */
+
     /* mobile fine-tune */
     @media (max-width: 700px) {
       .review-card {
@@ -210,13 +239,26 @@
     <!-- main heading as per article -->
     <h1>Honest Loans Review: Personal Loans for Bad Credit (Up to $50,000)</h1>
 
-    <!-- intro paragraph (simplified, keeping only the first sentence) -->
+    <!-- intro paragraph -->
     <div class="intro-text">
       <i class="fas fa-shield" style="color: #1b7e74; margin-right: 10px;"></i>
       Looking for a financial safety net? Honest Loans offers a solution for borrowers with poor credit who need fast access to cash.
     </div>
 
-    <!-- Expert Take on LendingClub - now white background -->
+    <!-- ========== ADS START ========== -->
+    <!-- Each ad is wrapped in a container with Windows 7 cursor -->
+    <div class="ad-container">
+      <div data-mndbanid="70b3288a-7ccf-45bb-9372-4dceca53197d"></div>
+    </div>
+    <div class="ad-container">
+      <div data-mndbanid="07c29d12-ef80-45c8-aa54-2e880cf9ae2a"></div>
+    </div>
+    <div class="ad-container">
+      <div data-mndbanid="f1af80ea-5de2-4f07-b370-03cfc24eba28"></div>
+    </div>
+    <!-- ========== ADS END ========== -->
+
+    <!-- Expert Take on LendingClub -->
     <div class="expert-take">
       <div class="expert-header">
         <i class="fas fa-star-of-life"></i>
@@ -244,25 +286,27 @@
           <span class="stat-value"><i class="fas fa-clock"></i> 1 business day</span>
         </div>
       </div>
-      <!-- extra detail exactly like article -->
+      <!-- extra detail -->
       <div style="margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
         <span class="fee-highlight"><i class="fas fa-tag"></i>  Origination fee between 0% and 8%</span>
         <span class="fee-highlight"><i class="fas fa-calendar-check"></i>  Funding in as fast as one business day</span>
       </div>
     </div>
 
-    <!-- LendingClub feature line (from your text displayed cleanly) -->
+    <!-- LendingClub feature line -->
     <div class="lending-features">
       <div><i class="fas fa-check-circle"></i> <strong>Loan Range:</strong> $1,000 - $50,000</div>
       <div><i class="fas fa-check-circle"></i> <strong>Terms:</strong> 24 to 72 months</div>
       <div><i class="fas fa-check-circle"></i> <strong>Fees:</strong> 0%–8% origination (depends on credit)</div>
     </div>
 
-    <!-- small footer / disclaimer -->
+    <!-- footer / disclaimer -->
     <small class="disclaimer">
       <i class="fas fa-lock" style="margin-right: 6px;"></i> 
       Honest Loans connects borrowers with participating lenders. Not a direct lender. Terms apply. The information presented here is for educational purposes as part of a sample review. LendingClub details based on public rates as of 2025.
     </small>
   </div>
+
+  <script async src="https://ss.mrmnd.com/banner.js"></script>
 </body>
 </html>
