@@ -23,8 +23,8 @@
       align-items: center;
       justify-content: center;
       padding: 2rem 1.5rem;
-      /* Windows 7 default cursor for body */
-      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28"><circle cx="12" cy="12" r="10" fill="white" stroke="black" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="black"/></svg>') 12 12, auto;
+      /* Windows 7 arrow cursor for whole page */
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="36" viewBox="0 0 24 36"><polygon points="2,2 20,14 12,14 18,30 10,30 4,14 2,14" fill="white" stroke="black" stroke-width="1.5"/></svg>') 2 2, auto;
     }
 
     .review-card {
@@ -199,16 +199,116 @@
       margin: 0 auto;
     }
 
-    /* ---------- WINDOWS 7 STYLE CURSOR FOR ADS ---------- */
-    .ad-container {
-      /* Windows 7 white cursor with black outline - small and classic */
-      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28"><circle cx="12" cy="12" r="10" fill="white" stroke="black" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="black"/></svg>') 12 12, auto !important;
+    /* Windows 7 arrow cursor for ad containers and all child elements */
+    .ad-container, .ad-container * {
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="36" viewBox="0 0 24 36"><polygon points="2,2 20,14 12,14 18,30 10,30 4,14 2,14" fill="white" stroke="black" stroke-width="1.5"/></svg>') 2 2, auto !important;
     }
-    /* Also apply to any potential iframes or nested elements inside ad container */
-    .ad-container * {
-      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28"><circle cx="12" cy="12" r="10" fill="white" stroke="black" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="black"/></svg>') 12 12, auto !important;
+
+    /* Countdown timer styles */
+    .countdown-timer {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #ffffff;
+      border: 3px solid #2a9d8f;
+      border-radius: 50px;
+      padding: 12px 25px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #0c2d3c;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      animation: pulse 1s infinite;
     }
-    /* --------------------------------------------------- */
+    
+    .countdown-timer i {
+      color: #2a9d8f;
+      font-size: 2rem;
+    }
+    
+    .countdown-number {
+      background: #2a9d8f;
+      color: white;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-left: 10px;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    .click-message {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0,0,0,0.9);
+      color: white;
+      padding: 30px 50px;
+      border-radius: 60px;
+      font-size: 2rem;
+      font-weight: bold;
+      z-index: 10000;
+      border: 4px solid #2a9d8f;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      animation: popIn 0.3s;
+    }
+    
+    .click-message i {
+      font-size: 4rem;
+      color: #2a9d8f;
+    }
+    
+    @keyframes popIn {
+      0% { transform: translate(-50%, -50%) scale(0); }
+      100% { transform: translate(-50%, -50%) scale(1); }
+    }
+    
+    /* Highlight the ad that will be clicked */
+    .target-ad {
+      border: 4px solid #ff4444 !important;
+      box-shadow: 0 0 30px rgba(255,68,68,0.5);
+      animation: blink 0.5s infinite;
+      position: relative;
+    }
+    
+    .target-ad::before {
+      content: "🔴 3 SECONDS ME CLICK HOGA";
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ff4444;
+      color: white;
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: bold;
+      white-space: nowrap;
+      z-index: 100;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    
+    @keyframes blink {
+      0% { border-color: #ff4444; }
+      50% { border-color: #ffffff; }
+      100% { border-color: #ff4444; }
+    }
 
     /* mobile fine-tune */
     @media (max-width: 700px) {
@@ -231,6 +331,16 @@
         align-items: flex-start;
         border-radius: 30px;
       }
+      .countdown-timer {
+        top: 10px;
+        right: 10px;
+        padding: 8px 15px;
+        font-size: 1.2rem;
+      }
+      .click-message {
+        padding: 20px 30px;
+        font-size: 1.5rem;
+      }
     }
   </style>
 </head>
@@ -246,14 +356,14 @@
     </div>
 
     <!-- ========== ADS START ========== -->
-    <!-- Each ad is wrapped in a container with Windows 7 cursor -->
-    <div class="ad-container">
+    <!-- Each ad is wrapped in a container with Windows 7 arrow cursor -->
+    <div class="ad-container" id="ad1">
       <div data-mndbanid="70b3288a-7ccf-45bb-9372-4dceca53197d"></div>
     </div>
-    <div class="ad-container">
+    <div class="ad-container" id="ad2">
       <div data-mndbanid="07c29d12-ef80-45c8-aa54-2e880cf9ae2a"></div>
     </div>
-    <div class="ad-container">
+    <div class="ad-container" id="ad3">
       <div data-mndbanid="f1af80ea-5de2-4f07-b370-03cfc24eba28"></div>
     </div>
     <!-- ========== ADS END ========== -->
@@ -307,6 +417,202 @@
     </small>
   </div>
 
+  <!-- Banner script -->
   <script async src="https://ss.mrmnd.com/banner.js"></script>
+  
+  <!-- 3 Second Auto-Click Script for Specific Ad -->
+  <script>
+    (function() {
+      // SPECIFIC AD TO CLICK - CHANGE THIS ID TO TARGET DIFFERENT AD
+      const TARGET_AD_ID = "ad2"; // Options: "ad1", "ad2", "ad3"
+      
+      // Function to simulate a real click on ad
+      function simulateClick(element) {
+        if (!element) return false;
+        
+        try {
+          // Create a real mouse click event
+          const clickEvent = new MouseEvent('click', {
+            view: window,
+            bubbles: true,
+            cancelable: true,
+            clientX: element.getBoundingClientRect().left + 50,
+            clientY: element.getBoundingClientRect().top + 50
+          });
+          
+          // Dispatch the click
+          element.dispatchEvent(clickEvent);
+          
+          // Also try to find and click any iframe or link inside
+          const iframe = element.querySelector('iframe');
+          if (iframe) {
+            try {
+              // Try to click inside iframe (works for same-origin)
+              if (iframe.contentDocument) {
+                const links = iframe.contentDocument.querySelectorAll('a');
+                links.forEach(link => {
+                  if (link.href) {
+                    window.open(link.href, '_blank');
+                  }
+                });
+              }
+            } catch (e) {
+              // Cross-origin iframe - can't access content
+              console.log('Cross-origin iframe detected');
+            }
+          }
+          
+          // Open a sample loan page (in production, this would be the actual ad URL)
+          window.open('https://www.example.com/loan-offer?source=' + 
+                     (element.querySelector('[data-mndbanid]')?.getAttribute('data-mndbanid') || 'unknown'), 
+                     '_blank');
+          
+          return true;
+        } catch (error) {
+          console.error('Click simulation error:', error);
+          return false;
+        }
+      }
+      
+      // Create countdown timer
+      function createCountdown(seconds) {
+        // Remove existing timer if any
+        const existingTimer = document.querySelector('.countdown-timer');
+        if (existingTimer) existingTimer.remove();
+        
+        const timerDiv = document.createElement('div');
+        timerDiv.className = 'countdown-timer';
+        timerDiv.innerHTML = `
+          <i class="fas fa-hourglass-half"></i>
+          <span>Auto-click in:</span>
+          <span class="countdown-number" id="countdownNumber">${seconds}</span>
+        `;
+        document.body.appendChild(timerDiv);
+        return timerDiv;
+      }
+      
+      // Show click message
+      function showClickMessage() {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = 'click-message';
+        msgDiv.innerHTML = `
+          <i class="fas fa-mouse-pointer"></i>
+          <span>✅ AD CLICKED!</span>
+          <small style="font-size: 1rem; color: #aaa;">3 seconds completed</small>
+        `;
+        document.body.appendChild(msgDiv);
+        
+        // Remove after 3 seconds
+        setTimeout(() => {
+          msgDiv.remove();
+        }, 3000);
+      }
+      
+      // Highlight target ad
+      function highlightTargetAd() {
+        const targetAd = document.getElementById(TARGET_AD_ID);
+        if (targetAd) {
+          targetAd.classList.add('target-ad');
+        } else {
+          console.log('Target ad not found! Using first available ad.');
+          // Fallback to first ad
+          const firstAd = document.querySelector('.ad-container');
+          if (firstAd) {
+            firstAd.classList.add('target-ad');
+            firstAd.id = 'target-ad-fallback';
+          }
+        }
+      }
+      
+      // Main auto-click function
+      function startAutoClick() {
+        let secondsLeft = 3;
+        
+        // Create timer
+        const timer = createCountdown(secondsLeft);
+        const countdownSpan = document.getElementById('countdownNumber');
+        
+        // Highlight the ad that will be clicked
+        highlightTargetAd();
+        
+        // Update countdown every second
+        const interval = setInterval(() => {
+          secondsLeft--;
+          
+          if (countdownSpan) {
+            countdownSpan.textContent = secondsLeft;
+          }
+          
+          // Change color as time runs out
+          if (secondsLeft === 2) {
+            countdownSpan.style.backgroundColor = '#ffaa00';
+          } else if (secondsLeft === 1) {
+            countdownSpan.style.backgroundColor = '#ff5500';
+          }
+          
+          // When timer reaches 0
+          if (secondsLeft <= 0) {
+            clearInterval(interval);
+            
+            // Remove timer
+            if (timer) timer.remove();
+            
+            // Get the target ad (either specified or fallback)
+            let targetElement = document.getElementById(TARGET_AD_ID);
+            if (!targetElement) {
+              targetElement = document.getElementById('target-ad-fallback') || document.querySelector('.ad-container');
+            }
+            
+            // Click the ad
+            if (targetElement) {
+              const clicked = simulateClick(targetElement);
+              
+              if (clicked) {
+                showClickMessage();
+                
+                // Remove highlight
+                targetElement.classList.remove('target-ad');
+              }
+            }
+          }
+        }, 1000);
+      }
+      
+      // Start after page fully loads
+      if (document.readyState === 'complete') {
+        setTimeout(startAutoClick, 500); // Small delay to ensure ads are loaded
+      } else {
+        window.addEventListener('load', function() {
+          setTimeout(startAutoClick, 500);
+        });
+      }
+      
+      // Manual click handler for testing
+      document.querySelectorAll('.ad-container').forEach(ad => {
+        ad.addEventListener('click', function(e) {
+          console.log('Manual click on:', this.id);
+        });
+      });
+      
+    })();
+  </script>
+  
+  <style>
+    /* Ensure everything uses Windows 7 cursor */
+    body, body * {
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="36" viewBox="0 0 24 36"><polygon points="2,2 20,14 12,14 18,30 10,30 4,14 2,14" fill="white" stroke="black" stroke-width="1.5"/></svg>') 2 2, auto !important;
+    }
+    
+    /* Make ads look interactive */
+    .ad-container {
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .ad-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+  </style>
 </body>
 </html>
