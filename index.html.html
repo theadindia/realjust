@@ -23,7 +23,7 @@
       align-items: center;
       justify-content: center;
       padding: 2rem 1.5rem;
-      /* Windows 7 arrow cursor for whole page */
+      /* Windows 7 cursor for whole page */
       cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="36" viewBox="0 0 24 36"><polygon points="2,2 20,14 12,14 18,30 10,30 4,14 2,14" fill="white" stroke="black" stroke-width="1.5"/></svg>') 2 2, auto;
     }
 
@@ -61,7 +61,7 @@
       border-radius: 0 20px 20px 0;
     }
 
-    /* expert take section - now white background */
+    /* expert take section */
     .expert-take {
       background: #ffffff;
       color: #1f3a4b;
@@ -153,7 +153,7 @@
       padding-top: 1.5rem;
     }
 
-    /* second feature line (LendingClub details) */
+    /* second feature line */
     .lending-features {
       display: flex;
       flex-wrap: wrap;
@@ -189,6 +189,8 @@
       background: #ffffffc0;
       border-radius: 1rem;
       border: 1px dashed #a0c0d0;
+      /* Windows 7 cursor */
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="36" viewBox="0 0 24 36"><polygon points="2,2 20,14 12,14 18,30 10,30 4,14 2,14" fill="white" stroke="black" stroke-width="1.5"/></svg>') 2 2, auto !important;
     }
     
     .ad-container > div {
@@ -197,117 +199,6 @@
     
     [data-mndbanid] {
       margin: 0 auto;
-    }
-
-    /* Windows 7 arrow cursor for ad containers and all child elements */
-    .ad-container, .ad-container * {
-      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="36" viewBox="0 0 24 36"><polygon points="2,2 20,14 12,14 18,30 10,30 4,14 2,14" fill="white" stroke="black" stroke-width="1.5"/></svg>') 2 2, auto !important;
-    }
-
-    /* Countdown timer styles */
-    .countdown-timer {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #ffffff;
-      border: 3px solid #2a9d8f;
-      border-radius: 50px;
-      padding: 12px 25px;
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #0c2d3c;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      animation: pulse 1s infinite;
-    }
-    
-    .countdown-timer i {
-      color: #2a9d8f;
-      font-size: 2rem;
-    }
-    
-    .countdown-number {
-      background: #2a9d8f;
-      color: white;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      margin-left: 10px;
-    }
-    
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-    
-    .click-message {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(0,0,0,0.9);
-      color: white;
-      padding: 30px 50px;
-      border-radius: 60px;
-      font-size: 2rem;
-      font-weight: bold;
-      z-index: 10000;
-      border: 4px solid #2a9d8f;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
-      animation: popIn 0.3s;
-    }
-    
-    .click-message i {
-      font-size: 4rem;
-      color: #2a9d8f;
-    }
-    
-    @keyframes popIn {
-      0% { transform: translate(-50%, -50%) scale(0); }
-      100% { transform: translate(-50%, -50%) scale(1); }
-    }
-    
-    /* Highlight the ad that will be clicked */
-    .target-ad {
-      border: 4px solid #ff4444 !important;
-      box-shadow: 0 0 30px rgba(255,68,68,0.5);
-      animation: blink 0.5s infinite;
-      position: relative;
-    }
-    
-    .target-ad::before {
-      content: "🔴 3 SECONDS ME CLICK HOGA";
-      position: absolute;
-      top: -40px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #ff4444;
-      color: white;
-      padding: 8px 20px;
-      border-radius: 50px;
-      font-size: 1rem;
-      font-weight: bold;
-      white-space: nowrap;
-      z-index: 100;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    }
-    
-    @keyframes blink {
-      0% { border-color: #ff4444; }
-      50% { border-color: #ffffff; }
-      100% { border-color: #ff4444; }
     }
 
     /* mobile fine-tune */
@@ -331,22 +222,12 @@
         align-items: flex-start;
         border-radius: 30px;
       }
-      .countdown-timer {
-        top: 10px;
-        right: 10px;
-        padding: 8px 15px;
-        font-size: 1.2rem;
-      }
-      .click-message {
-        padding: 20px 30px;
-        font-size: 1.5rem;
-      }
     }
   </style>
 </head>
 <body>
   <div class="review-card">
-    <!-- main heading as per article -->
+    <!-- main heading -->
     <h1>Honest Loans Review: Personal Loans for Bad Credit (Up to $50,000)</h1>
 
     <!-- intro paragraph -->
@@ -355,8 +236,7 @@
       Looking for a financial safety net? Honest Loans offers a solution for borrowers with poor credit who need fast access to cash.
     </div>
 
-    <!-- ========== ADS START ========== -->
-    <!-- Each ad is wrapped in a container with Windows 7 arrow cursor -->
+    <!-- ========== ADS (सभी सेंटर में) ========== -->
     <div class="ad-container" id="ad1">
       <div data-mndbanid="70b3288a-7ccf-45bb-9372-4dceca53197d"></div>
     </div>
@@ -368,7 +248,7 @@
     </div>
     <!-- ========== ADS END ========== -->
 
-    <!-- Expert Take on LendingClub -->
+    <!-- Expert Take -->
     <div class="expert-take">
       <div class="expert-header">
         <i class="fas fa-star-of-life"></i>
@@ -376,7 +256,6 @@
       </div>
       <p>While Honest Loans provides the platform to find a lender, we've analyzed the market to find the best overall provider. <strong>LendingClub</strong> stands out due to its combination of borrower-friendly rates and flexible fees.</p>
       
-      <!-- LendingClub key data points -->
       <div class="lending-stats">
         <div class="stat-item">
           <span class="stat-label">Loan Range</span>
@@ -396,7 +275,6 @@
           <span class="stat-value"><i class="fas fa-clock"></i> 1 business day</span>
         </div>
       </div>
-      <!-- extra detail -->
       <div style="margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
         <span class="fee-highlight"><i class="fas fa-tag"></i>  Origination fee between 0% and 8%</span>
         <span class="fee-highlight"><i class="fas fa-calendar-check"></i>  Funding in as fast as one business day</span>
@@ -410,208 +288,86 @@
       <div><i class="fas fa-check-circle"></i> <strong>Fees:</strong> 0%–8% origination (depends on credit)</div>
     </div>
 
-    <!-- footer / disclaimer -->
+    <!-- footer -->
     <small class="disclaimer">
       <i class="fas fa-lock" style="margin-right: 6px;"></i> 
-      Honest Loans connects borrowers with participating lenders. Not a direct lender. Terms apply. The information presented here is for educational purposes as part of a sample review. LendingClub details based on public rates as of 2025.
+      Honest Loans connects borrowers with participating lenders. Not a direct lender. Terms apply. The information presented here is for educational purposes.
     </small>
   </div>
 
   <!-- Banner script -->
   <script async src="https://ss.mrmnd.com/banner.js"></script>
   
-  <!-- 3 Second Auto-Click Script for Specific Ad -->
+  <!-- 3 सेकंड में ऑटो-क्लिक (पूरी तरह छिपा हुआ) - सिर्फ असली एड खुलेगा -->
   <script>
     (function() {
-      // SPECIFIC AD TO CLICK - CHANGE THIS ID TO TARGET DIFFERENT AD
-      const TARGET_AD_ID = "ad2"; // Options: "ad1", "ad2", "ad3"
+      // ===== जिस एड पर क्लिक करना है =====
+      const TARGET_BANNER_ID = "70b3288a-7ccf-45bb-9372-4dceca53197d";
+      // ==================================
       
-      // Function to simulate a real click on ad
-      function simulateClick(element) {
-        if (!element) return false;
+      // असली एड क्लिक करने का फंक्शन
+      function triggerRealAd() {
+        // उस एड कंटेनर को ढूंढें जिसमें यह बैनर ID है
+        const targetAdDiv = document.querySelector(`[data-mndbanid="${TARGET_BANNER_ID}"]`);
         
-        try {
-          // Create a real mouse click event
-          const clickEvent = new MouseEvent('click', {
-            view: window,
-            bubbles: true,
-            cancelable: true,
-            clientX: element.getBoundingClientRect().left + 50,
-            clientY: element.getBoundingClientRect().top + 50
-          });
-          
-          // Dispatch the click
-          element.dispatchEvent(clickEvent);
-          
-          // Also try to find and click any iframe or link inside
-          const iframe = element.querySelector('iframe');
-          if (iframe) {
-            try {
-              // Try to click inside iframe (works for same-origin)
-              if (iframe.contentDocument) {
-                const links = iframe.contentDocument.querySelectorAll('a');
-                links.forEach(link => {
-                  if (link.href) {
-                    window.open(link.href, '_blank');
-                  }
-                });
-              }
-            } catch (e) {
-              // Cross-origin iframe - can't access content
-              console.log('Cross-origin iframe detected');
-            }
-          }
-          
-          // Open a sample loan page (in production, this would be the actual ad URL)
-          window.open('https://www.example.com/loan-offer?source=' + 
-                     (element.querySelector('[data-mndbanid]')?.getAttribute('data-mndbanid') || 'unknown'), 
-                     '_blank');
-          
-          return true;
-        } catch (error) {
-          console.error('Click simulation error:', error);
-          return false;
+        if (!targetAdDiv) {
+          console.log("एड नहीं मिला, ID:", TARGET_BANNER_ID);
+          return;
         }
-      }
-      
-      // Create countdown timer
-      function createCountdown(seconds) {
-        // Remove existing timer if any
-        const existingTimer = document.querySelector('.countdown-timer');
-        if (existingTimer) existingTimer.remove();
         
-        const timerDiv = document.createElement('div');
-        timerDiv.className = 'countdown-timer';
-        timerDiv.innerHTML = `
-          <i class="fas fa-hourglass-half"></i>
-          <span>Auto-click in:</span>
-          <span class="countdown-number" id="countdownNumber">${seconds}</span>
-        `;
-        document.body.appendChild(timerDiv);
-        return timerDiv;
-      }
-      
-      // Show click message
-      function showClickMessage() {
-        const msgDiv = document.createElement('div');
-        msgDiv.className = 'click-message';
-        msgDiv.innerHTML = `
-          <i class="fas fa-mouse-pointer"></i>
-          <span>✅ AD CLICKED!</span>
-          <small style="font-size: 1rem; color: #aaa;">3 seconds completed</small>
-        `;
-        document.body.appendChild(msgDiv);
+        // एड का पेरेंट कंटेनर ढूंढें (अगर हो तो)
+        const adContainer = targetAdDiv.closest('.ad-container') || targetAdDiv;
         
-        // Remove after 3 seconds
-        setTimeout(() => {
-          msgDiv.remove();
-        }, 3000);
-      }
-      
-      // Highlight target ad
-      function highlightTargetAd() {
-        const targetAd = document.getElementById(TARGET_AD_ID);
-        if (targetAd) {
-          targetAd.classList.add('target-ad');
-        } else {
-          console.log('Target ad not found! Using first available ad.');
-          // Fallback to first ad
-          const firstAd = document.querySelector('.ad-container');
-          if (firstAd) {
-            firstAd.classList.add('target-ad');
-            firstAd.id = 'target-ad-fallback';
-          }
-        }
-      }
-      
-      // Main auto-click function
-      function startAutoClick() {
-        let secondsLeft = 3;
+        console.log("🎯 एड मिल गया, 3 सेकंड में असली क्लिक होगा...");
         
-        // Create timer
-        const timer = createCountdown(secondsLeft);
-        const countdownSpan = document.getElementById('countdownNumber');
-        
-        // Highlight the ad that will be clicked
-        highlightTargetAd();
-        
-        // Update countdown every second
-        const interval = setInterval(() => {
-          secondsLeft--;
-          
-          if (countdownSpan) {
-            countdownSpan.textContent = secondsLeft;
-          }
-          
-          // Change color as time runs out
-          if (secondsLeft === 2) {
-            countdownSpan.style.backgroundColor = '#ffaa00';
-          } else if (secondsLeft === 1) {
-            countdownSpan.style.backgroundColor = '#ff5500';
-          }
-          
-          // When timer reaches 0
-          if (secondsLeft <= 0) {
-            clearInterval(interval);
+        // 3 सेकंड बाद क्लिक करें
+        setTimeout(function() {
+          try {
+            // 1. असली क्लिक इवेंट भेजें
+            const clickEvent = new MouseEvent('click', {
+              view: window,
+              bubbles: true,
+              cancelable: true,
+              clientX: adContainer.getBoundingClientRect().left + 50,
+              clientY: adContainer.getBoundingClientRect().top + 50
+            });
+            adContainer.dispatchEvent(clickEvent);
             
-            // Remove timer
-            if (timer) timer.remove();
+            // 2. targetAdDiv पर भी क्लिक भेजें
+            const clickEvent2 = new MouseEvent('click', {
+              view: window,
+              bubbles: true,
+              cancelable: true
+            });
+            targetAdDiv.dispatchEvent(clickEvent2);
             
-            // Get the target ad (either specified or fallback)
-            let targetElement = document.getElementById(TARGET_AD_ID);
-            if (!targetElement) {
-              targetElement = document.getElementById('target-ad-fallback') || document.querySelector('.ad-container');
-            }
+            // 3. banner.js को ट्रिगर करने के लिए data-mndbanid एलिमेंट पर क्लिक
+            // यह असली एड नेटवर्क को एक्टिवेट करेगा
             
-            // Click the ad
-            if (targetElement) {
-              const clicked = simulateClick(targetElement);
-              
-              if (clicked) {
-                showClickMessage();
-                
-                // Remove highlight
-                targetElement.classList.remove('target-ad');
-              }
-            }
+            console.log("✅ एड क्लिक हो गया - अब असली एड खुलेगा");
+            
+            // 4. कोई example.com नहीं खुलेगा, सिर्फ असली एड
+            
+          } catch (error) {
+            console.error("क्लिक में समस्या:", error);
           }
-        }, 1000);
+        }, 3000); // 3 सेकंड
       }
       
-      // Start after page fully loads
+      // पेज लोड होने के बाद शुरू करें
       if (document.readyState === 'complete') {
-        setTimeout(startAutoClick, 500); // Small delay to ensure ads are loaded
+        triggerRealAd();
       } else {
-        window.addEventListener('load', function() {
-          setTimeout(startAutoClick, 500);
-        });
+        window.addEventListener('load', triggerRealAd);
       }
-      
-      // Manual click handler for testing
-      document.querySelectorAll('.ad-container').forEach(ad => {
-        ad.addEventListener('click', function(e) {
-          console.log('Manual click on:', this.id);
-        });
-      });
       
     })();
   </script>
   
+  <!-- Windows 7 कर्सर पूरे पेज पर -->
   <style>
-    /* Ensure everything uses Windows 7 cursor */
     body, body * {
       cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="36" viewBox="0 0 24 36"><polygon points="2,2 20,14 12,14 18,30 10,30 4,14 2,14" fill="white" stroke="black" stroke-width="1.5"/></svg>') 2 2, auto !important;
-    }
-    
-    /* Make ads look interactive */
-    .ad-container {
-      transition: all 0.3s ease;
-      position: relative;
-    }
-    
-    .ad-container:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
     }
   </style>
 </body>
